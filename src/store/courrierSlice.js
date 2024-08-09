@@ -25,40 +25,30 @@ export const requestConsultCourrier = createAsyncThunk(
 );
 
 export const requestNameSearch = createAsyncThunk(
-    'courrier/requestNameSearch',
-    async ({ name }, { rejectWithValue }) => {
-      try {
-        const token = localStorage.getItem('token');
-  
-        if (!token) {
-          throw new Error('No token provided');
-        }
-  
-        const res = await axios.post(
-          'http://localhost:1111/user/nsearch',
-          { name }, // This is the request body
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }
-        );
-  
-        // Validate the response structure
-        const { success, Courriers } = res.data;
-        if (typeof success !== 'boolean' || !Array.isArray(Courriers)) {
-          throw new Error('Unexpected response structure');
-        }
-  
-        return res.data; // Adjust this based on expected structure
-      } catch (error) {
-        console.error('Error in requestNameSearch:', error);
-        return rejectWithValue(
-          error.response ? error.response.data.message : error.message
-        );
+  'courrier/requestNameSearch',
+  async (name, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error('No token provided');
       }
+
+      const res = await axios.get(`http://localhost:1111/user/SBN/${encodeURIComponent(name)}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response ? error.response.data.message : error.message);
     }
-  );
+  }
+);
+
+
+  
 
 
 export const courrierSlice = createSlice({
@@ -66,7 +56,7 @@ export const courrierSlice = createSlice({
     initialState: {
         isLoading: false,
         error: null,
-        ResCourriers: null
+        ResCourriers: []
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -96,20 +86,15 @@ export const courrierSlice = createSlice({
                 state.isLoading = true;
                 state.error = false;
             })
-           
             .addCase(requestNameSearch.fulfilled, (state, action) => {
+              state.ResCourriers = action.payload.Courriers;
+              console.log('Consultation successful');
+              console.log(action.payload);
 
-                console.log("Payload from request consult:", action.payload); // Debugging
-                state.isLoading = false;
-                
-                if (action.payload && action.payload.Courriers) {
-                    state.ResCourriers = action.payload.Courriers;
-                    console.log('Consultation successful');
-                } else {
-                    state.error = 'Unexpected response structure';
-                    console.log('Unexpected response structure:', action.payload);
-                }
-            })
+              state.isLoading = false;
+              state.error = null;
+          })
+          
             
     
     }
