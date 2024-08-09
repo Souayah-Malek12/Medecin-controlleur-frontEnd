@@ -105,6 +105,26 @@
             }
         }
     )
+    export const requestConsultProfil = createAsyncThunk(
+        'user/requestConsultProfil',
+        async(_,{rejectWithValue})=>{
+            try{
+                const token = localStorage.getItem('token');
+                if(!token){
+                    throw new Error('No token provided'); 
+                }
+                const res = await axios.get('http://localhost:1111/user/profil', {
+                    headers : {
+                        Authorization : `Bearer ${token}`
+                    }
+                });
+                return res.data;
+            }catch(error){
+                console.log('Error response:', error.response);
+                return rejectWithValue(error.response ? error.response.data.message : error.message);
+            }
+        }
+    )
 
     export const userSlice = createSlice({
         name: 'user',
@@ -197,6 +217,20 @@
                 .addCase(requestUpdateProfil.fulfilled, (state, action)=> {
                     state.isLoading = false;
                     alertSuccess('Profil updated successfully');
+                })
+                .addCase(requestConsultProfil.pending, (state)=> {
+
+                    state.error = null;
+                    state.isLoading= true;
+                })
+                .addCase(requestConsultProfil.rejected, (state, action)=> {
+                    state.isLoading= false;
+                    state.error = action.payload;
+                    alertError(action.payload);
+                })
+                .addCase(requestConsultProfil.fulfilled, (state, action)=>{
+                    state.isLoading = false;
+                    state.details= action.payload;
                 })
         }
     });

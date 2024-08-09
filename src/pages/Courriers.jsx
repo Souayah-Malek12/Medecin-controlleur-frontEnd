@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Courriers = ()=> {
 
-    const {courriers, isLoading, error} = useSelector(state => state.courriers);
+    const {ResCourriers, isLoading, error} = useSelector(state => state.courriers);
 
     const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const Courriers = ()=> {
                 </div>
             )
         }
-        if(!courriers || courriers.length === 0){
+        if(!ResCourriers || ResCourriers.length === 0){
             return <h1>No courriers availables</h1>
         }
 
@@ -42,7 +42,8 @@ const Courriers = ()=> {
     
     return(
         <div className="bg-gray-50 p-6 w-full flex flex-col items-center p-12">
-            {courriers.map((courrier) => (
+            
+            {ResCourriers.map((courrier) => (
                 <div
                     key={courrier.id}
                     className="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mb-4 border border-gray-200 hover:bg-gray-100 transition-colors"

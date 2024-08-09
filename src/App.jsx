@@ -6,6 +6,8 @@ import UpdatePass from './pages/updPassword';
 import UpdateProfile from './pages/updProfil';
 import Courriers from './pages/Courriers';
 import Profil from './pages/ConsultProfil';
+import CourrierSearchForm from './pages/CourrierSearchForm';
+
 
 
 function App() {
@@ -19,7 +21,8 @@ function App() {
             <Route path='/updpass' element={ <UpdatePass />} />
             <Route path='/updprofil' element ={ <UpdateProfile />} />
             <Route path='/courrier' element ={ <Courriers />} />
-            <Routes path='/profil' element={ <Profil /> } />
+            <Route   path='/profil' element={ <Profil /> } />
+            <Route path='/Namesearch' element={  <CourrierSearchForm />} />
           </Routes>
       </BrowserRouter>
         
