@@ -23,6 +23,27 @@ export const requestConsultCourrier = createAsyncThunk(
         }
     }
 );
+export const requestSearchByDate = createAsyncThunk(
+'courrier/requestSearchByDate',
+async(date, {rejectWithValue})=> {
+    try{
+        const token = localStorage.getItem('token');
+        if(!token){
+            throw new Error('no token provided');
+        }
+        const res = await axios.get(`http://localhost:1111/user/tsearch/${encodeURIComponent(date)}`,{
+            headers : {
+                Authorization : ` Bearer ${token}`
+            }
+        });
+        console.log(res.data)
+        return res.data
+    }catch(error){
+        return rejectWithValue(error.response ? error.response.data.message : error.message);
+
+    }
+});
+
 
 export const requestNameSearch = createAsyncThunk(
   'courrier/requestNameSearch',
@@ -46,6 +67,31 @@ export const requestNameSearch = createAsyncThunk(
     }
   }
 );
+
+export const requestTreatCourrier = createAsyncThunk(
+    'courrier/http://localhost:1111/user/treat',
+    async({courrierID , answer}, {rejectWithValue})=>{
+    try{
+
+        const token = localStorage.getItem('token');
+        if(!token){
+            throw new Error("no Token provided"); 
+        }
+        console.log(token)
+        const res = await axios.post(`http://localhost:1111/user/treat`,
+            {courrierID, answer},
+            {
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            }
+        );
+        return res.data;
+    }catch(error){
+        return rejectWithValue(error.response ? error.response.data.message : error.message);
+    }
+    }
+)
 
 
   
@@ -71,6 +117,8 @@ export const courrierSlice = createSlice({
                 state.isLoading = false; 
                 state.error = null;
                 state.ResCourriers = action.payload.Courriers;
+                console.log('state.ResCourriers');
+
                 console.log('Consultation successful');
             })
             .addCase(requestConsultCourrier.rejected, (state, action) => {
@@ -94,6 +142,34 @@ export const courrierSlice = createSlice({
               state.isLoading = false;
               state.error = null;
           })
+          .addCase(requestSearchByDate.pending, (state)=> {
+            state.isLoading = true;
+            state.error = null;
+
+          })
+          .addCase(requestSearchByDate.rejected, (state, action)=> {
+            state.isLoading = false;
+            state.error = action.payload;
+          })
+          .addCase(requestSearchByDate.fulfilled, (state, action)=> {
+            state.error = null;
+            state.isLoading = false;
+            state.ResCourriers = action.payload.Courriers;
+          } )
+          .addCase(requestTreatCourrier.pending, (state)=> {
+            state.error = null;
+            state.isLoading = true;
+          })
+          .addCase(requestTreatCourrier.rejected, (state, action)=> {
+            state.isLoading = false;
+            state.error = action.payload ;
+          })
+          .addCase(requestTreatCourrier.fulfilled, (state, action)=> {
+            state.ResCourriers= action.payload.courrier;
+            state.error = null;
+            state.isLoading = false;
+          })
+
           
             
     
