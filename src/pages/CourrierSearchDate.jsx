@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { requestSearchByDate } from "../store/courrierSlice";
 import { InboxIcon } from '@heroicons/react/24/outline';
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const SearchByDate = () => {
 
@@ -67,6 +68,7 @@ const SearchByDate = () => {
                         <h2 className="text-lg font-medium text-blue-600">{courrier.status}</h2>
                       </div>
                       <h3 className="text-lg font-medium text-gray-700">{courrier.subject}</h3>
+                      <NavLink to={`/details/${courrier._id}`} className="text-blue-800 hover:underline">View Details </NavLink>
                       <p className="text-sm text-gray-500">{new Date(courrier.receivedDate).toLocaleDateString()}</p>
                     </div>
                   </div>

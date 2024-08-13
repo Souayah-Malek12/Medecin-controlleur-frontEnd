@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
  import { requestConsultCourrier } from "../store/courrierSlice";
  import { InboxIcon } from '@heroicons/react/24/outline';
+import { NavLink } from "react-router-dom";
+
 
 const Courriers = ()=> {
 
     const {ResCourriers, isLoading, error} = useSelector(state => state.courriers);
 
     const dispatch = useDispatch();
+
 
     useEffect(()=> {
 
@@ -58,6 +61,9 @@ const Courriers = ()=> {
                             <h3 className="text-lg font-medium text-gray-700">{courrier.subject}</h3>
                             <p className="text-sm text-gray-500">{courrier.receivedDate}</p>
                         </div>
+                        <NavLink to={`/details/${courrier._id}`} className="text-gray-800 hover:underline">View Details </NavLink>
+                    
+                        
                     </div>
                 </div>
             ))}

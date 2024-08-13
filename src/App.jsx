@@ -9,6 +9,8 @@ import Profil from './pages/ConsultProfil';
 import CourrierSearchForm from './pages/CourrierSearchName';
 import SearchByDate from './pages/CourrierSearchDate';
 import TreatCourrier from './pages/TreatCourrier';
+import HomePage from './pages/Home';
+import CourrierForm from './pages/CourrierForm';
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
     <>
       <BrowserRouter>
           <Routes>
+            <Route path="/" element={ <HomePage />} />
             <Route path="/login" element={<Login />} />
             <Route path='/registre' element={ <Registre />} />
             <Route path='/updpass' element={ <UpdatePass />} />
@@ -26,6 +29,7 @@ function App() {
             <Route path='/Namesearch' element={  <CourrierSearchForm />} />
             <Route path='/Datesearch' element={ <SearchByDate />} />
             <Route path='/treat' element ={ <TreatCourrier />} />
+            <Route path="/details/:id" element ={ <CourrierForm />} />
           </Routes>
       </BrowserRouter>
         

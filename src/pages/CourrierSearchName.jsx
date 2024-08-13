@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestNameSearch } from '../store/courrierSlice';
 import { InboxIcon } from '@heroicons/react/24/outline';
+import { NavLink } from "react-router-dom";
+
 
 const CourrierSearchForm = () => {
   const [name, setName] = useState('');
@@ -61,12 +63,15 @@ const CourrierSearchForm = () => {
                   </div>
                   <h3 className="text-lg font-medium text-gray-700">{courrier.subject}</h3>
                   <p className="text-sm text-gray-500">{new Date(courrier.receivedDate).toLocaleDateString()}</p>
+                  <NavLink to={`/details/${courrier._id}`} className="text-blue-800 hover:underline">View Details </NavLink>
+
                 </div>
               </div>
             </div>
           ))}
         </div>
       )}
+
     </div>
   );
 };
