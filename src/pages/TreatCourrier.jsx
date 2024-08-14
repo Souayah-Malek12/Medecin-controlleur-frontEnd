@@ -58,9 +58,7 @@
                 ) : (
                     <h1 className="text-gray-700">No traceability data available</h1>
                 )
-            ) : (
-                <h1 className="text-gray-700">No courrier</h1>
-            )}
+            ) :  <h1>No Trace</h1>}
         </div>
     </div>
     

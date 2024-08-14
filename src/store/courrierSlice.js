@@ -94,7 +94,32 @@ export const requestTreatCourrier = createAsyncThunk(
 )
 
 
-  
+export const requestAllCourrier = createAsyncThunk(
+    'courrier/requestAllCourrier',
+    async(_,{rejectWithValue})=>{
+        try{
+                const token = localStorage.getItem('token');
+
+                if(!token){
+                    throw new Error("no Token provided"); 
+                }
+                console.log(token)
+
+                const res = await axios.get(`http://localhost:1111/user/all`, 
+                    {
+                        headers : {
+                            Authorization : `bearer ${token}`
+                        }
+                    }
+
+                );
+                return res.data;
+        }catch(error){
+            return rejectWithValue(error.response ? error.response.data.message : error.message);
+
+        }
+    }
+)
 
 
 export const courrierSlice = createSlice({
@@ -169,6 +194,20 @@ export const courrierSlice = createSlice({
             state.error = null;
             state.isLoading = false;
           })
+          .addCase(requestAllCourrier.rejected, (state, action)=> {
+            state.isLoading = false;
+            state.error = action.payload;
+          })
+          .addCase(requestAllCourrier.pending, (state)=> {
+            state.isLoading = true;
+            state.error = null;
+          })
+          .addCase(requestAllCourrier.fulfilled, (state, action)=> {
+            state.ResCourriers = action.payload.courriers;
+            state.isLoading = false;
+            state.error = null;
+          })
+          
 
           
             

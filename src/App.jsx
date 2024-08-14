@@ -11,6 +11,7 @@ import SearchByDate from './pages/CourrierSearchDate';
 import TreatCourrier from './pages/TreatCourrier';
 import HomePage from './pages/Home';
 import CourrierForm from './pages/CourrierForm';
+import AllCourrier from './pages/AllCourrier';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path='/Datesearch' element={ <SearchByDate />} />
             <Route path='/treat' element ={ <TreatCourrier />} />
             <Route path="/details/:id" element ={ <CourrierForm />} />
+            <Route path="/allcourrier" element={ <AllCourrier />} />
           </Routes>
       </BrowserRouter>
         
