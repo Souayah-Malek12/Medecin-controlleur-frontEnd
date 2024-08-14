@@ -16,7 +16,7 @@ const Courriers = ()=> {
 
         const fetchCourriers = async()=> {
             try{
-        await dispatch(requestConsultCourrier())
+                await dispatch(requestConsultCourrier())
             }catch(error){
                 return console.log('Error in dispatch')
             }

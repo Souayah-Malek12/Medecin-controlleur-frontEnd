@@ -12,6 +12,7 @@ import TreatCourrier from './pages/TreatCourrier';
 import HomePage from './pages/Home';
 import CourrierForm from './pages/CourrierForm';
 import AllCourrier from './pages/AllCourrier';
+import Tracability from './pages/Tracability';
 
 
 function App() {
@@ -26,12 +27,13 @@ function App() {
             <Route path='/updpass' element={ <UpdatePass />} />
             <Route path='/updprofil' element ={ <UpdateProfile />} />
             <Route path='/courrier' element ={ <Courriers />} />
-            <Route   path='/profil' element={ <Profil /> } />
+            <Route path='/profil' element={ <Profil /> } />
             <Route path='/Namesearch' element={  <CourrierSearchForm />} />
             <Route path='/Datesearch' element={ <SearchByDate />} />
             <Route path='/treat' element ={ <TreatCourrier />} />
             <Route path="/details/:id" element ={ <CourrierForm />} />
             <Route path="/allcourrier" element={ <AllCourrier />} />
+            <Route path='/trac' element={ <Tracability /> } />
           </Routes>
       </BrowserRouter>
         

@@ -39,7 +39,7 @@ const HomePage = () => {
                 <div className="w-3/4 p-6 bg-blue-600  shadow-lg rounded-lg border border-gray-300">
                     <h2 className="text-3xl font-semibold mb-4 text-white font-extrabold">Latest News</h2>
                     {currentArticle ? (
-                        <div key={currentArticle.article_id} className="border rounded-lg p-4 shadow-md bg-gray-50">
+                        <div key={currentArticle.article_id} className="border rounded-lg p-10 shadow-md bg-gray-50">
                             <img 
                                 src={currentArticle.image_url} 
                                 alt={currentArticle.title} 
