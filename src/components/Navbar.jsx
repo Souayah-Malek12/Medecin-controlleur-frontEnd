@@ -12,7 +12,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className="shadow-md w-full fixed top-0 left-0 bg-blue-50">
+        <div className="shadow-md w-full fixed top-0 left-0 bg-blue-50 mb-50">
             <div className="md:flex items-center justify-between bg-white py-2 m-2 px-1 shadow-md rounded-lg">
                 <div className="font-bold cursor-pointer flex items-center font-[poppins] text-gray-800">
                     <span className="text-3xl text-blue-600 py-4 md:px-10 px-7">

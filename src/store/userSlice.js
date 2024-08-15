@@ -235,5 +235,5 @@
         }
     });
 
-    export const { login } = userSlice.actions;
+    export const { login, lougout } = userSlice.actions;
     export default userSlice.reducer;

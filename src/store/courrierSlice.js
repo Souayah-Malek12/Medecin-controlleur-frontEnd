@@ -129,7 +129,12 @@ export const courrierSlice = createSlice({
         error: null,
         ResCourriers: []
     },
-    reducers: {},
+    reducers: {
+        clearCourriers: (state) => {
+            state.ResCourriers = [];
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(requestConsultCourrier.pending, (state) => {
@@ -214,5 +219,7 @@ export const courrierSlice = createSlice({
     
     }
 });
+
+export const { clearCourriers } = courrierSlice.actions;
 
 export default courrierSlice.reducer;

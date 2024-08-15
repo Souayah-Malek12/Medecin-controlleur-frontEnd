@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^11.3.27",
     "ps2024f": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

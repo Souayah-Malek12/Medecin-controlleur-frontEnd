@@ -1,6 +1,6 @@
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
- import { requestConsultCourrier } from "../store/courrierSlice";
+ import { requestConsultCourrier  , clearCourriers} from "../store/courrierSlice";
  import { InboxIcon } from '@heroicons/react/24/outline';
 import { NavLink } from "react-router-dom";
 
@@ -23,6 +23,9 @@ const Courriers = ()=> {
         }
 
         fetchCourriers() 
+        return ()=> { 
+            dispatch((clearCourriers()))
+         }
     },[dispatch] )
        
     

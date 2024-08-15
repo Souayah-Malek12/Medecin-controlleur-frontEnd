@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import Footer from '../components/footer';
-import Navbar from '../components/Navbar';
 
 const HomePage = () => {
     const [articles, setArticles] = useState([]);
@@ -60,9 +58,7 @@ const HomePage = () => {
                     {/* Add more content here as needed */}
                 </div>
             </div>
-            <Footer />
         </div>
-     
     );
 };
 
