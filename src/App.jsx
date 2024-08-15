@@ -13,6 +13,8 @@ import HomePage from './pages/Home';
 import CourrierForm from './pages/CourrierForm';
 import AllCourrier from './pages/AllCourrier';
 import Tracability from './pages/Tracability';
+import About from './pages/About';
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <div>
+          <Navbar />
           <Routes>
             <Route path="/" element={ <HomePage />} />
             <Route path="/login" element={<Login />} />
@@ -34,7 +38,9 @@ function App() {
             <Route path="/details/:id" element ={ <CourrierForm />} />
             <Route path="/allcourrier" element={ <AllCourrier />} />
             <Route path='/trac' element={ <Tracability /> } />
+            <Route path='/about' element = { <About />} />
           </Routes>
+        </div>
       </BrowserRouter>
         
     </>
