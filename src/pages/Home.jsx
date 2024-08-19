@@ -1,63 +1,51 @@
 import { useEffect, useState } from 'react';
+import Footer from '../components/footer';
+
+import img1 from '../img/HomeImg/Image1.jpg';
+import img2 from '../img/HomeImg/Image2.jpg';
+import img3 from '../img/HomeImg/Image3.jpg';
+import img4 from '../img/HomeImg/Image4.jpg';
 
 const HomePage = () => {
-    const [articles, setArticles] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const api_key = "pub_50834724c1498c003655d33b3bb0376ae0a91";
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`https://newsdata.io/api/1/news?apikey=${api_key}&q=pharmacy&country=gb`);
-                const data = await response.json();
-                setArticles(data.results);
-            } catch (error) {
-                console.log('Error while fetching API', error);
-            }
-        };
+    const imgs = [img1, img2, img3, img4];
 
-        fetchData();
-    }, [api_key]);
-    
     useEffect(() => {
-        if (articles.length) {
+        if (imgs.length) {
             const interval = setInterval(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % articles.length);
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % imgs.length);
             }, 3000);
 
             return () => clearInterval(interval);
         }
-    }, [articles]);
+    }, [imgs]);
 
-    const currentArticle = articles[currentIndex];
+    const currentArticle = imgs[currentIndex];
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-100 m-10 p-8">
-            
-            <div className="flex flex-row flex-1 p-4">
-                <div className="w-3/4 p-6 bg-blue-600  shadow-lg rounded-lg border border-gray-300">
-                    <h2 className="text-3xl font-semibold mb-4 text-white font-extrabold">Latest News</h2>
+            <div className="flex flex-row flex-1 p-4 space-x-4">
+                <div className="w-3/4 bg-blue-600 shadow-lg rounded-lg border border-gray-300 overflow-hidden transition-transform transform hover:scale-105">
                     {currentArticle ? (
-                        <div key={currentArticle.article_id} className="border rounded-lg p-10 shadow-md bg-gray-50">
+                        <div className="relative">
                             <img 
-                                src={currentArticle.image_url} 
-                                alt={currentArticle.title} 
-                                className="w-full h-60 object-cover rounded-md mb-4" 
+                                src={currentArticle} 
+                                alt="HomeImage" 
+                                className="w-full h-60 object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-110" 
                             />
-                            <h3 className="text-2xl font-semibold mb-2 text-gray-900">{currentArticle.title}</h3>
-                            <p className="text-gray-800 mb-2">{currentArticle.description}</p>
-                            <a href={currentArticle.link} className="text-blue-700 hover:underline font-medium">Read more</a>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
                         </div>
                     ) : (
-                        <p className="text-gray-600">Loading...</p>
+                        <p className="text-gray-600 text-center p-4">Loading...</p>
                     )}
                 </div>
-                <div className="w-1/4 p-6 bg-gray-200 shadow-lg rounded-lg border border-gray-300 ml-4">
+                <div className="w-1/4 bg-gray-200 shadow-lg rounded-lg border border-gray-300 p-6 transition-transform transform hover:scale-105">
                     <h2 className="text-2xl font-semibold text-gray-800">Additional Info</h2>
-                    {/* Add more content here as needed */}
+                    <p className="text-gray-600 mt-2">Here you can add some extra details or content that complements the main article.</p>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

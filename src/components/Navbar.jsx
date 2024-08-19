@@ -7,7 +7,7 @@ const Navbar = () => {
     const links = [
         { name: "Home", link: '/' },
         { name: "Login", link: '/login' },
-        { name: "Register", link: '/register' }, // Corrected 'registre' to 'register'
+        { name: "Register", link: '/registre' }, // Corrected 'registre' to 'register'
         { name: "About", link: '/about' }
     ];
 

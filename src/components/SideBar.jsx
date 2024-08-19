@@ -4,16 +4,22 @@ import { FaBars, FaTimes, FaEnvelope, FaSearch, FaCalendarAlt, FaList, FaInfoCir
 
 const Sidebar = () => {
     const [visible, setIsVisible] = useState(false); // Start with the sidebar hidden
+    const [showProfileOptions, setShowProfilOptions] = useState(false);
 
     const toggleSidebar = () => {
         setIsVisible(!visible);
     };
 
+    
+    const toggleProfileOptions = () => {
+        setShowProfilOptions(!showProfileOptions)
+    }
+
     return (
-        <div className="relative">
+        <div className="relative mt-20">
             <button
                 onClick={toggleSidebar}
-                className="fixe top-20 left-4 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
+                className="fixed top-20 left-4 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
             >
                 {visible ? <FaTimes /> : <FaBars />}
             </button>
@@ -74,6 +80,37 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                 </ul>
+
+                <div className="mt-6">
+                    <button
+                        onClick={toggleProfileOptions}
+                        className="block w-full text-left px-6 py-3 hover:bg-blue-700 transition duration-200"
+                    >
+                        <span className="text-lg">Profile</span>
+                    </button>
+                    {showProfileOptions && (
+                        <div className="flex flex-col px-6">
+                            <NavLink
+                                to="/profil"
+                                className="py-2 hover:bg-blue-700 transition duration-200"
+                            >
+                                Consult Profile
+                            </NavLink>
+                            <NavLink
+                                to="/updprofil"
+                                className="py-2 hover:bg-blue-700 transition duration-200"
+                            >
+                                Update Profile
+                            </NavLink>
+                            <NavLink
+                                to="/updpass"
+                                className="py-2 hover:bg-blue-700 transition duration-200"
+                            >
+                                Update Password
+                            </NavLink>
+                        </div>
+                    )}
+                </div>
             </nav>
         </div>
     );

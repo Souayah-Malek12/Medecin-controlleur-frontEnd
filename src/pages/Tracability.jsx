@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { requestConsultCourrier } from "../store/courrierSlice";
+import { requestAllCourrier } from "../store/courrierSlice";
 
 const Tracability = () => {
     const { ResCourriers, isLoading, error } = useSelector((state) => state.courriers);
@@ -9,7 +9,7 @@ const Tracability = () => {
     useEffect(() => {
         const fetchTrace = () => {
             try {
-                dispatch(requestConsultCourrier());
+                dispatch(requestAllCourrier());
             } catch (error) {
                 console.log('Error in dispatch:', error);
             }
