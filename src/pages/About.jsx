@@ -1,7 +1,7 @@
 
 const About = () => {
     return (
-        <div className="flex flex-col min-h-screen bg-gray-100 p-8">
+        <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-8 mt-20">
             <header className="mb-10 text-center">
                 <h1 className="text-5xl font-bold text-blue-800">À Propos de MedControl</h1>
             </header>

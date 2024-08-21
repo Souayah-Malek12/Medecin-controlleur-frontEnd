@@ -13,10 +13,10 @@
             
 
             
-                alert('Logged In Successfully');
 
                 console.log('loged in')
                 return res.data;
+                navigate('/courrier');
             
             } catch (error) {
                 return rejectWithValue(error.response ? error.response.data.message : error.message);
@@ -141,15 +141,14 @@
                 state.token = action.payload.token;
                 state.details = action.payload.details;
                 localStorage.setItem('token', action.payload.token);
-                localStorage.removeItem('userDetails');
+                localStorage.setItem('userDetails', JSON.stringify(action.payload.details));
             },
-            lougout : (state )=>{
-                state.isAuthenticated = false,
-                localStorage.removeItem('token'),
-                localStorage.removeItem('userDetails')
+            logout: (state) => {
+                state.isAuthenticated = false;
                 state.token = null;
                 state.details = null;
-                
+                localStorage.removeItem('token');
+                localStorage.removeItem('userDetails');
             }
         },
         extraReducers: (builder) => {
@@ -235,5 +234,5 @@
         }
     });
 
-    export const { login, lougout } = userSlice.actions;
+    export const { login, logout } = userSlice.actions;
     export default userSlice.reducer;

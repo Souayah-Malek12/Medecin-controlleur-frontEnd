@@ -16,7 +16,7 @@ const UpdatePass = ()=> {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100'>
+        <div className='flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-r from-blue-50 to-blue-100'>
       <form onSubmit={handleSubmit} className='bg-white p-8 rounded-lg shadow-md w-full max-w-md'>
         <div className='text-center mb-6'>
           <h1 className='text-3xl font-bold text-gray-800  '>Change Password</h1>

@@ -1,19 +1,17 @@
-import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
-import SideBar from '../components/SideBar';
+import { useSelector } from 'react-redux';
+import { Outlet, Navigate } from 'react-router-dom';
 
 const InsideLayout = () => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
+    console.log('InsideLayout isAuthenticated:', isAuthenticated); // Debugging line
+
     return (
-        isAuthenticated ? 
-        (
+        isAuthenticated ? (
             <>
-                <SideBar />
-                <Outlet /> 
+                <Outlet />
             </>
-        ) : 
-        (
+        ) : (
             <Navigate to='/login' />
         )
     );

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import SideBar from '../components/SideBar';
 import Navbar from "../components/Navbar";
 
 const NeutralLayout = ()=> {
@@ -13,7 +12,7 @@ const NeutralLayout = ()=> {
         isAuthenticated ? 
         <>
            ( <Outlet />
-            <SideBar /> )
+             )
         </> 
         : 
 

@@ -24,7 +24,7 @@ const Profil = () => {
     }
 
     return (
-        <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen">
+        <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen mt-10">
         <div className=" mt-10 bg-white p-8 rounded-lg shadow-xl w-full max-w-lg mx-auto border border-blue-300">
             <h1 className="text-2xl font-extrabold text-blue-900 mb-4">{details.firstName} {details.lastName}</h1>
             <p className="text-xl text-gray-700 mb-2">Addresse :<span className="text-blue-700 font-medium"></span>{details.address}</p>
