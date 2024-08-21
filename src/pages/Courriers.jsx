@@ -47,7 +47,7 @@ const Courriers = ()=> {
 
     
     return(
-        <div className="bg-gray-50 p-6 w-full flex flex-col items-center p-12">
+        <div className="bg-gray-50 p-6 w-full flex flex-col items-center p-12 mt-20">
             
             {ResCourriers.map((courrier) => (
                 <div
