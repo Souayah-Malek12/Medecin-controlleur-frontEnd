@@ -16,7 +16,6 @@
 
                 console.log('loged in')
                 return res.data;
-                navigate('/courrier');
             
             } catch (error) {
                 return rejectWithValue(error.response ? error.response.data.message : error.message);
@@ -42,7 +41,7 @@
                     alert('Registred Successfully');
                 return res.data ;
 
-            }catch{
+            }catch(error){
                 return rejectWithValue(error.response ? error.response.data.message : error.message);
 
             }
@@ -164,6 +163,8 @@
 
                     localStorage.setItem('token', token);
                     localStorage.setItem('userDetails', JSON.stringify(userDetails));
+                    console.log(action.payload.message);
+                    alert(`Login successful: ${action.payload.message}`);
                     console.log('accepted login');
 
                 
@@ -171,6 +172,8 @@
                 .addCase(requestLogin.rejected, (state, action) => {
                     state.isLoading = false;
                     state.error = action.payload;
+                    console.log(action.payload);
+                    alert(`Login Error : ${action.payload}`);
                     console.log('rejected login')
                 })
                 .addCase(requestRegistre.pending, (state)=>{
@@ -180,13 +183,17 @@
                 .addCase(requestRegistre.fulfilled, (state, action)=> {
                     state.isLoading = false;
                     console.log(action.payload.message);
+                    alert(`Registre successful: ${action.payload.message}`);
+
                     console.log('accepted Registre')
 
                 
                 })
                 .addCase(requestRegistre.rejected, (state, action)=>{
                     state.isLoading = false;
-                    state.error = action.payload;
+                    state.error = action.payload 
+                    alert( `Registre Error  ${action.payload}`)
+                    console.log(state.error)
                     console.log('rejected Registre');
                     
                 })

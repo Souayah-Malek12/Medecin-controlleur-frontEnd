@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { requestRegistre } from "../store/userSlice";
 
@@ -13,6 +13,8 @@ const Registre = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [step, setStep] = useState(1);
+
+    const {error} = useSelector((state)=>state.user)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -28,11 +30,12 @@ const Registre = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(requestRegistre({ firstName, lastName, address, phoneNumber, role, establishment, email, password }));
-        navigate('/login');
+        
+        error ? navigate('/login'): navigate('/registre')
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-r from-blue-50 to-blue-100">
+        <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-r from-blue-50 to-blue-100">
             <div className="text-center mb-8">
                 <h1 className="text-4xl font-extrabold text-blue-800">Inscription</h1>
             </div>
