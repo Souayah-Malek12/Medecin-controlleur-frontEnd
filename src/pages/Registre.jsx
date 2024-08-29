@@ -12,6 +12,7 @@ const Registre = () => {
     const [establishment, setEstablishment] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [step, setStep] = useState(1);
 
     const {error} = useSelector((state)=>state.user)
@@ -29,7 +30,7 @@ const Registre = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(requestRegistre({ firstName, lastName, address, phoneNumber, role, establishment, email, password }));
+        dispatch(requestRegistre({ firstName, lastName, address, phoneNumber, role, establishment, email, password, confirmPassword }));
         
         error ? navigate('/login'): navigate('/registre')
     };
@@ -37,7 +38,7 @@ const Registre = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-r from-blue-50 to-blue-100">
             <div className="text-center mb-8">
-                <h1 className="text-4xl font-extrabold text-blue-800">Inscription</h1>
+                <h1 className="text-4xl font-extrabold text-blue-800 mt-10">Inscription</h1>
             </div>
             {step === 1 && (
                 <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg border border-gray-300">
@@ -51,6 +52,7 @@ const Registre = () => {
                                     <label htmlFor={field} className="block text-sm font-medium mb-2 text-gray-700 capitalize">{field.replace(/([A-Z])/g, ' $1').trim()}</label>
                                     <input
                                         type="text"
+                                        required
                                         value={eval(field)}
                                         id={field}
                                         onChange={e => eval(`set${field.charAt(0).toUpperCase() + field.slice(1)}(e.target.value)`)}
@@ -76,6 +78,7 @@ const Registre = () => {
                                 <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-700">Email</label>
                                 <input
                                     type="email"
+                                    required
                                     value={email}
                                     id="email"
                                     onChange={e => setEmail(e.target.value)}
@@ -86,10 +89,23 @@ const Registre = () => {
                                 <label htmlFor="password" className="block text-sm font-medium mb-2 text-gray-700">Password</label>
                                 <input
                                     type="password"
+                                    required
                                     value={password}
                                     id="password"
                                     onChange={e => setPassword(e.target.value)}
                                     className="border border-gray-300 rounded-lg p-3 w-full text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2 text-gray-700">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    required
+                                    value={confirmPassword}
+                                    id="confirmPassword"
+                                    onChange={(e => setConfirmPassword(e.target.value))}
+                                    className="border border-gray-300 rounded-lg p-3 w-full text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+
                                 />
                             </div>
                             <div className="flex justify-between mt-6">

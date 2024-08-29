@@ -20,7 +20,7 @@ const Sidebar = () => {
         <div className="relative z-50"> 
             <button
                 onClick={toggleSidebar}
-                className="fixed top-20 left-4 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
+                className=" fixed top-5 left-4 z-50 p-3 text-white  rounded-xl shadow-lg hover:text-blue-700 hover:bg-white transition duration-300"
             >
                 {visible ? <FaTimes /> : <FaBars />}
             </button>

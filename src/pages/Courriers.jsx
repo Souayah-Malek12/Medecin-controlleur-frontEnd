@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
  import { requestConsultCourrier  , clearCourriers} from "../store/courrierSlice";
  import { InboxIcon } from '@heroicons/react/24/outline';
 import { NavLink } from "react-router-dom";
-
+import { ClipLoader } from "react-spinners";
 
 const Courriers = ()=> {
 
@@ -29,9 +29,13 @@ const Courriers = ()=> {
     },[dispatch] )
        
     
-        if(isLoading){
-            return <h1>Loading ...</h1>
-        }
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <ClipLoader color="#4A90E2" size={50} />
+                </div>
+        );
+    }
 
         if(error){
             return (
@@ -41,7 +45,7 @@ const Courriers = ()=> {
             )
         }
         if(!ResCourriers || ResCourriers.length === 0){
-            return <h1>No courriers availables</h1>
+            alert("No courriers availables") 
         }
 
 

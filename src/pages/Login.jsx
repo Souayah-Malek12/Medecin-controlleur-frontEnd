@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { requestLogin } from '../store/userSlice';
 
@@ -8,12 +8,18 @@ const Login = () => {
   const [success, setSuccess] = useState(false);
   const dispatch = useDispatch();
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestLogin({ email, password }));
+
     setSuccess(true);
     console.log(`Email: ${email}`);
+
+    
   }
+
+   
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-r from-blue-50 to-blue-100'>

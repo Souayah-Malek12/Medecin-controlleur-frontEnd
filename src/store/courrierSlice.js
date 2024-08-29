@@ -121,6 +121,26 @@ export const requestAllCourrier = createAsyncThunk(
     }
 )
 
+export const requestCourrierTraceability = createAsyncThunk(
+    'user/requestCourrierTraceability',
+    async(_,{rejectWithValue}) => {
+        try{
+            const token = localStorage.getItem('token')
+        const res = await axios.get('http://localhost:1111/user/trac', {
+            headers : {
+                Authorization : `Bearer ${token}`
+            }
+        });
+            return res.data;
+        }catch(error){
+            console.log('Error response' , error.message)
+            return rejectWithValue(error.response ? error.response.data.message : error.message);
+
+        }
+        
+    }
+)
+
 
 export const courrierSlice = createSlice({
     name: 'courrier',
@@ -212,6 +232,20 @@ export const courrierSlice = createSlice({
             state.isLoading = false;
             state.error = null;
           })
+          .addCase(requestCourrierTraceability.pending , (state)=>{
+            state.isLoading = true;
+            state.error = null;
+          })
+          .addCase(requestCourrierTraceability.rejected, (state, action)=> {
+            state.isLoading = false;
+            state.error = action.payload;
+          })
+          .addCase(requestCourrierTraceability.fulfilled, (state, action)=> {
+            state.ResCourriers = action.payload.TracCourriers;
+            state.isLoading = false;
+            state.error = null;
+          })
+          
           
 
           

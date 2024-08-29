@@ -3,7 +3,7 @@ const About = () => {
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-8 mt-20">
             <header className="mb-10 text-center">
-                <h1 className="text-5xl font-bold text-blue-800">À Propos de MedControl</h1>
+                <h1 className="text-5xl font-bold text-blue-800">À Propos de I-Santé Expert</h1>
             </header>
             
             <section className="mb-8 p-6 bg-white shadow-lg rounded-lg border border-blue-300">
@@ -16,7 +16,7 @@ const About = () => {
             <section className="mb-8 p-6 bg-white shadow-lg rounded-lg border border-green-300">
                 <h2 className="text-3xl font-semibold text-green-700 mb-4">Solution</h2>
                 <p className="text-gray-700">
-                    <strong>MedControl</strong> simplifie la gestion des courriers médicaux avec des fonctionnalités telles que la traçabilité, une interface utilisateur intuitive, et l'automatisation des processus.
+                    <strong>I-Santé Expert</strong> simplifie la gestion des courriers médicaux avec des fonctionnalités telles que la traçabilité, une interface utilisateur intuitive, et l'automatisation des processus.
                 </p>
             </section>
             
@@ -30,7 +30,7 @@ const About = () => {
             <section className="mb-8 p-6 bg-white shadow-lg rounded-lg border border-pink-300">
                 <h2 className="text-3xl font-semibold text-pink-700 mb-4">Besoins</h2>
                 <p className="text-gray-700">
-                    <strong>MedControl</strong> doit être fiable, ergonomique, efficace, sécurisé, performant, et fournir une traçabilité complète.
+                    <strong>I-Santé Expert  </strong> doit être fiable, ergonomique, efficace, sécurisé, performant, et fournir une traçabilité complète.
                 </p>
             </section>
             

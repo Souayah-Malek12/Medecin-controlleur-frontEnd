@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { requestAllCourrier } from "../store/courrierSlice";
+import { requestCourrierTraceability } from "../store/courrierSlice";
+import {ClipLoader} from 'react-spinners'
 
 const Tracability = () => {
     const { ResCourriers, isLoading, error } = useSelector((state) => state.courriers);
@@ -9,7 +10,7 @@ const Tracability = () => {
     useEffect(() => {
         const fetchTrace = () => {
             try {
-                dispatch(requestAllCourrier());
+                dispatch(requestCourrierTraceability());
             } catch (error) {
                 console.log('Error in dispatch:', error);
             }
@@ -21,8 +22,8 @@ const Tracability = () => {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-screen">
-                <h1 className="text-2xl font-semibold text-gray-700">Loading...</h1>
-            </div>
+                <ClipLoader color="#4A90E2" size={50} />
+                </div>
         );
     }
 
@@ -39,7 +40,7 @@ const Tracability = () => {
             <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">Couriers Traceability</h1>
             {ResCourriers && ResCourriers.length > 0 ? (
                 ResCourriers.map((courrier, index) => (
-                    <div key={index} className="mb-8 p-6 bg-white rounded-lg shadow-md">
+                    <div key={index} className="mb-8 p-6 bg-white rounded-lg shadow-md p-5">
                         <h2 className="text-2xl font-bold mb-4 text-gray-800">Sender: {courrier.sender}</h2>
                         {courrier.traceability && courrier.traceability.length > 0 ? (
                             <div className="space-y-4">

@@ -25,7 +25,7 @@
 
     export const requestRegistre = createAsyncThunk(
         'user/requestRegistre',
-        async({firstName, lastName, address, phoneNumber, role, establishment, email, password}, {rejectWithValue})=> {
+        async({firstName, lastName, address, phoneNumber, role, establishment, email, password, confirmPassword}, {rejectWithValue})=> {
             try{
             
                 const res  = await axios.post(`http://localhost:1111/authen/registre`, {
@@ -36,8 +36,10 @@
                     role, 
                     establishment, 
                     email, 
-                    password
+                    password,
+                    confirmPassword
                     });
+                   
                     alert('Registred Successfully');
                 return res.data ;
 

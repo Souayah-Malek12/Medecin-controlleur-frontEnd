@@ -11,7 +11,6 @@ import Img2 from '../img/HomeDiv/courrier.png';
 import Img4 from '../img/HomeDiv/safe.png';
 import Img5 from '../img/HomeDiv/storage.png';
 
-import capt from '../img/capt1.png';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,7 +30,7 @@ const HomePage = () => {
   const currentArticle = imgs[currentIndex];
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100 mt-20">
+    <div className="flex flex-col min-h-screen bg-gray-100 mt-20 p-14 mb-15">
       <div className="flex flex-col md:flex-row flex-1 p-8 md:p-12">
         <div className="flex flex-col md:w-1/2 mb-20 md:mb-0 md:mr-8 ">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
@@ -44,7 +43,7 @@ const HomePage = () => {
             International Medical professionals can access this feature.
           </p>
           <a
-            className="bg-blue-700 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-800 transition-colors"
+            className="bg-blue-700 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-800 text-xl font-semibold transition-colors"
             href="/registre"
           >
             Join today
@@ -57,9 +56,9 @@ const HomePage = () => {
           </p>
         </div>
         <div className="flex-1 flex justify-center p-4">
-  <div className="shadow-lg rounded-lg border overflow-hidden transform hover:scale-105 transition-transform duration-500 ease-in-out">
+  <div >
     {currentArticle ? (
-      <div className="relative">
+      <div >
         <img
           src={currentArticle}
           alt="HomeImage"
@@ -74,17 +73,17 @@ const HomePage = () => {
 
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 px-4 py-12 bg-gradient-to-r from-blue-50 to-blue-100">
-        <div className="flex flex-col items-center text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 px-4 py-12 bg-gradient-to-r from-blue-50 to-blue-100 p-15 ">
+        <div className="flex flex-col items-center text-center ">
           <div className="bg-white p-1 rounded-full shadow-lg">
-            <img className="w-20 h-15 text-blue-900 rounded-full" src={Img1} alt="Doctor Icon" />
+            <img className="w-22 h-16 text-blue-900 rounded-full" src={Img1} alt="Doctor Icon" />
           </div>
           <p className="mt-6 text-blue-900 font-bold text-lg">Used by more than 1,500 doctors daily</p>
         </div>
 
         <div className="flex flex-col items-center text-center">
           <div className="bg-white p-1 rounded-full shadow-lg">
-            <img className="w-20 h-15 text-blue-900 rounded-full" src={Img2} alt="Email Icon" />
+            <img className="w-22 h-16 text-blue-900 rounded-full" src={Img2} alt="Email Icon" />
           </div>
           <p className="mt-6 text-blue-900 font-bold text-lg">
             Well-recognized and respected email address that will stay with you throughout your career
@@ -93,14 +92,14 @@ const HomePage = () => {
 
         <div className="flex flex-col items-center text-center">
           <div className="bg-white p-1 rounded-full shadow-lg">
-            <img className="w-20 h-15 text-blue-900 rounded-full" src={Img5} alt="Storage Icon" />
+            <img className="w-22 h-16 text-blue-900 rounded-full" src={Img5} alt="Storage Icon" />
           </div>
           <p className="mt-6 text-blue-900 font-bold text-lg">Unlimited storage for your medical records</p>
         </div>
 
         <div className="flex flex-col items-center text-center">
           <div className="bg-white p-1 rounded-full shadow-lg">
-            <img className="w-20 h-15 text-blue-900 rounded-full" src={Img4} alt="Search Icon" />
+            <img className="w-22 h-16 text-blue-900 rounded-full" src={Img4} alt="Search Icon" />
           </div>
           <p className="mt-6 text-blue-900 font-bold text-lg">
             Advanced search options to find your records and Courriers quickly
