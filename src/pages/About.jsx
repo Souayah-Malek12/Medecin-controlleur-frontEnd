@@ -16,14 +16,14 @@ const About = () => {
             <section className="mb-8 p-6 bg-white shadow-lg rounded-lg border border-green-300">
                 <h2 className="text-3xl font-semibold text-green-700 mb-4">Solution</h2>
                 <p className="text-gray-700">
-                    <strong>I-Santé Expert</strong> simplifie la gestion des courriers médicaux avec des fonctionnalités telles que la traçabilité, une interface utilisateur intuitive, et l'automatisation des processus.
+                    <strong>I-Santé Expert</strong> simplifie la gestion des courriers médicaux avec des fonctionnalités telles que la traçabilité, une interface utilisateur intuitive, et l automatisation des processus.
                 </p>
             </section>
             
             <section className="mb-8 p-6 bg-white shadow-lg rounded-lg border border-yellow-300">
                 <h2 className="text-3xl font-semibold text-yellow-700 mb-4">Acteurs</h2>
                 <p className="text-gray-700">
-                    Les médecins contrôleurs peuvent s’authentifier, gérer leur profil, consulter les dossiers à traiter, et visualiser l’historique des dossiers traités.
+                    Les médecins contrôleurs peuvent s authentifier, gérer leur profil, consulter les dossiers à traiter, et visualiser l’historique des dossiers traités.
                 </p>
             </section>
             
@@ -35,7 +35,7 @@ const About = () => {
             </section>
             
             <footer className="mt-12 py-4 border-t border-gray-300 text-center bg-gray-200">
-                <p className="text-gray-600">© {new Date().getFullYear()} MedControl. Tous droits réservés.</p>
+                <p className="text-gray-600">© {new Date().getFullYear()} I-Santé Expert. Tous droits réservés.</p>
             </footer>
         </div>
     );

@@ -210,7 +210,7 @@
                 })
                 .addCase(requestUpdatePass.fulfilled, (state, action)=>{
                     state.isLoading = false;
-                    alertSuccess('Password updated successfully');
+                    alert('Password updated successfully');
                     console.log(action.payload.message);
                 })
                 .addCase(requestUpdateProfil.pending, (state)=> {
@@ -224,7 +224,7 @@
                 })
                 .addCase(requestUpdateProfil.fulfilled, (state, action)=> {
                     state.isLoading = false;
-                    alertSuccess('Profil updated successfully');
+                    alert('Profil updated successfully');
                 })
                 .addCase(requestConsultProfil.pending, (state)=> {
 

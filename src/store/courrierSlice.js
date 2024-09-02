@@ -163,7 +163,7 @@ export const courrierSlice = createSlice({
             })
             .addCase(requestConsultCourrier.fulfilled, (state, action) => {
                 
-                console.log("Payload from request consult :", action.payload); // Debugging
+                console.log("Payload from request consult :", action.payload); 
                 state.isLoading = false; 
                 state.error = null;
                 state.ResCourriers = action.payload.Courriers;

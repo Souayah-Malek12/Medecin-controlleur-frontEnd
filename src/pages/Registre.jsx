@@ -32,7 +32,7 @@ const Registre = () => {
         e.preventDefault();
         dispatch(requestRegistre({ firstName, lastName, address, phoneNumber, role, establishment, email, password, confirmPassword }));
         
-        error ? navigate('/login'): navigate('/registre')
+        navigate('/login')
     };
 
     return (

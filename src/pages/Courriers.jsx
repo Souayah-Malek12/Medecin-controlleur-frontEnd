@@ -44,9 +44,7 @@ const Courriers = ()=> {
                 </div>
             )
         }
-        if(!ResCourriers || ResCourriers.length === 0){
-            alert("No courriers availables") 
-        }
+       
 
 
     
